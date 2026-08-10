@@ -1,0 +1,38 @@
+name: Semantic Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Requerido para crear commits, tags y releases
+      pull-requests: write
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Necesario para leer todo el historial de commits
+
+      # Instala uv y configura la caché de dependencias
+      - name: Instalar uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+
+      # Sincroniza todas las dependencias (prod + dev) en un solo paso
+      - name: Instalar dependencias
+        run: uv sync --frozen
+
+      # Ejecuta semantic-release
+      - name: Generar Release Automático
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          uv run semantic-release version
