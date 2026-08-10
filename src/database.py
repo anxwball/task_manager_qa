@@ -4,7 +4,7 @@ from typing import Generator
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base, Session
 
-from settings import DATABASE_URL # src/db/tasks.db
+from src.settings import DATABASE_URL # src/db/tasks.db
 
 if DATABASE_URL is None:
     raise ValueError("La variable de entorno DATABASE_URL no está configurada.")
