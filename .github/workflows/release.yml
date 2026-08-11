@@ -16,6 +16,7 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v4
         with:
+          token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0 # Necesario para leer todo el historial de commits
 
       # Instala uv y configura la caché de dependencias
