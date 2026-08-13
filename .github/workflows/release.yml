@@ -32,13 +32,15 @@ jobs:
 
       # S8541: Prevención de ejecución de build scripts
       # S8544: Uso estricto de uv.lock congelado
+      # Instala las dependencias previamente congeladas
       - name: Instalar dependencias
         run: uv sync --frozen --no-build
 
+      # Genera la release usando las dependencias ya sincronizadas
       - name: Generar Release Automático
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config user.name "anxwball"
           git config user.email "anxwball@users.noreply.github.com"
-          uv run --frozen semantic-release version
+          .venv/bin/semantic-release version
