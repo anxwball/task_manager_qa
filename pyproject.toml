@@ -42,3 +42,6 @@ exclude_commit_types = [
 
 [tool.semantic_release.branches.main]
 match = "main"
+
+[tool.uv]
+package = false

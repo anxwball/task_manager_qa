@@ -30,13 +30,11 @@ jobs:
         with:
           enable-cache: true
 
-      # S8541: Prevención de ejecución de build scripts
-      # S8544: Uso estricto de uv.lock congelado
-      # Instala las dependencias previamente congeladas
+      # Paso 1: Instala dependencias con la bandera que exige SonarQube
       - name: Instalar dependencias
         run: uv sync --frozen --no-build
 
-      # Genera la release usando las dependencias ya sincronizadas
+      # Paso 2: Invoca el ejecutable directo del entorno sin llamar a `uv run`
       - name: Generar Release Automático
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
