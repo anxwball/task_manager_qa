@@ -12,3 +12,7 @@ wheels/
 
 # Environment variables
 .env
+
+# Sensitive files
+config.json
+settings.json
