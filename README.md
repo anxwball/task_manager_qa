@@ -1,129 +1,164 @@
 # Task Manager QA
 
-Mini-proyecto académico de **Calidad de Software** orientado al desarrollo incremental de una agenda de tareas y a la aplicación de prácticas básicas de aseguramiento de la calidad.
+## Introducción
 
-El proyecto utiliza Python y SQLAlchemy y mantiene una estructura preparada para separar la lógica de aplicación, persistencia y pruebas. El objetivo principal no es únicamente obtener un software que funcione, sino establecer evidencia verificable de que los componentes implementados cumplen los comportamientos esperados.
+**Task Manager QA** es un mini-producto académico desarrollado para aplicar principios básicos de **calidad de software** durante el ciclo de vida de un sistema sencillo de gestión de tareas.
 
-> **Contexto académico:** este repositorio se utiliza como evidencia práctica para un taller de Calidad de Software basado en Aprendizaje Basado en Proyectos (ABP). La actividad está planteada para equipos de dos personas; en esta entrega el trabajo se desarrolla individualmente.
+El proyecto se desarrolla en Python y utiliza SQLAlchemy como capa de persistencia. Su propósito no se limita a construir una agenda de tareas funcional, sino a demostrar un proceso básico de aseguramiento de calidad basado en:
 
-## Objetivos
+* definición de requisitos verificables;
+* implementación incremental;
+* pruebas automatizadas;
+* aislamiento del entorno de pruebas;
+* control de versiones;
+* trazabilidad de cambios;
+* revisión mediante checklist;
+* análisis crítico del uso de inteligencia artificial.
 
-- Construir un prototipo sencillo de gestión de tareas.
-- Aplicar pruebas automatizadas sobre los componentes desarrollados.
-- Utilizar una base de datos aislada para las pruebas.
-- Mantener trazabilidad mediante control de versiones.
-- Documentar evidencias de calidad y resultados de las pruebas.
-- Reflexionar sobre la diferencia entre que un software **funcione** y que funcione **con calidad**.
+El proyecto forma parte del taller **“Introducción a la Calidad en el Desarrollo de Software: de la teoría a la práctica”**, cuya metodología se fundamenta en Aprendizaje Basado en Proyectos (ABP) y Aula Invertida.
 
-## Alcance actual
+> **Contexto de trabajo:** la actividad académica establece equipos de dos estudiantes para la fase práctica. Esta implementación está siendo desarrollada individualmente, por lo que el repositorio refleja un único flujo de desarrollo y no pretende representar una colaboración inexistente.
 
-El repositorio se encuentra en una etapa incremental. Actualmente se ha establecido la infraestructura inicial de persistencia y pruebas:
+---
 
-- Configuración de conexión a base de datos mediante `DATABASE_URL`.
-- Integración con SQLAlchemy.
-- Creación y eliminación de tablas mediante una base declarativa.
-- Gestión contextual de sesiones de base de datos.
-- Entorno de pruebas independiente utilizando SQLite en memoria.
-- Prueba automatizada inicial de conectividad a la base de datos.
-- Configuración de `pytest` como framework de pruebas.
-- Control de versiones mediante Git/GitHub.
-- Registro de cambios mediante `CHANGELOG.md`.
+## 1. Propósito del proyecto
 
-La funcionalidad completa de agenda de tareas se incorporará de forma incremental; por ello, este README distingue entre la infraestructura existente y los objetivos de calidad del producto final, evitando presentar como implementadas funcionalidades que todavía no existen.
+El propósito del proyecto es construir progresivamente una agenda de tareas y utilizarla como caso práctico para demostrar que la calidad de software debe evaluarse mediante **evidencia verificable**, no únicamente mediante la ejecución satisfactoria de un escenario.
 
-## Metodología de trabajo
+El proyecto busca responder tres preguntas:
 
-### Aprendizaje Basado en Proyectos (ABP)
+1. **¿Qué debe hacer el sistema?**
+2. **¿Cómo se puede demostrar que lo hace correctamente?**
+3. **¿Qué evidencia permite sostener que una implementación tiene un nivel aceptable de calidad?**
 
-El repositorio funciona como un mini-producto sobre el cual se aplican prácticas de calidad durante el desarrollo. Cada incremento debe producir código funcional acompañado, cuando corresponda, de pruebas y evidencia.
+La estrategia adoptada es incremental:
 
-### Aula Invertida
+> **Requisito → Implementación → Prueba → Evidencia → Revisión → Mejora**
 
-La aplicación práctica se complementa con revisión previa de conceptos relacionados con calidad de software, pruebas, control de versiones y criterios de aceptación.
+---
 
-### Uso crítico de IA
+## 2. Alcance
 
-La IA puede utilizarse como apoyo para:
+### Alcance funcional previsto
 
-- Proponer casos de prueba.
-- Generar una checklist inicial de calidad.
-- Sugerir métricas o escenarios de prueba.
-- Identificar posibles casos límite.
+El producto final tendrá como objetivo proporcionar una agenda sencilla de tareas con operaciones básicas de gestión:
 
-Las propuestas generadas por IA no se consideran evidencia por sí mismas. Deben ser revisadas, adaptadas y justificadas de acuerdo con el comportamiento real del sistema.
+* creación de tareas;
+* consulta de tareas;
+* actualización de tareas;
+* eliminación de tareas;
+* validación de entradas;
+* persistencia de información.
 
-## Estrategia de calidad
+Estas funcionalidades constituyen el **objetivo del producto**, pero no deben interpretarse como funcionalidades actualmente implementadas.
 
-La estrategia se organiza alrededor de cuatro elementos:
+### Alcance de calidad
 
-1. **Requisitos y comportamiento esperado**: definir qué debe hacer cada funcionalidad.
-2. **Casos de prueba**: comprobar comportamientos normales, límites y entradas inválidas cuando sean aplicables.
-3. **Checklist de calidad**: revisar aspectos técnicos y de proceso antes de considerar terminado un incremento.
-4. **Evidencias**: conservar resultados de pruebas, decisiones y cambios realizados en el repositorio.
+El proyecto también contempla:
 
-### Principio de calidad
+* pruebas automatizadas mediante `pytest`;
+* base de datos aislada para pruebas;
+* pruebas de escenarios válidos e inválidos;
+* verificación de persistencia;
+* verificación del aislamiento entre pruebas;
+* control de versiones mediante Git/GitHub;
+* trazabilidad mediante `CHANGELOG.md`;
+* validaciones mediante `pre-commit`;
+* automatización del versionado mediante `python-semantic-release`;
+* documentación de evidencias;
+* revisión crítica de propuestas generadas mediante IA.
 
-> Que una aplicación ejecute correctamente un escenario no demuestra por sí solo que el software tenga calidad.
+---
 
-La calidad se evalúa considerando, además del funcionamiento, aspectos como validación, mantenibilidad, trazabilidad, pruebas reproducibles y comportamiento ante condiciones no ideales.
+## 3. Estado actual del proyecto
 
-## Pruebas
+El proyecto se encuentra en una **fase inicial de infraestructura y aseguramiento de calidad**.
 
-El proyecto utiliza **pytest** y dispone de un entorno de base de datos separado del entorno de desarrollo.
+### Implementado
 
-Las pruebas utilizan SQLite en memoria (`sqlite:///:memory:`), lo que permite ejecutar los casos de prueba sin depender de una base de datos persistente externa. Cada prueba recibe una sesión aislada y se realiza rollback al finalizar.
+Actualmente se encuentran implementados:
 
-### Prueba implementada
+* configuración mediante `DATABASE_URL`;
+* carga de variables de entorno mediante `python-dotenv`;
+* creación del engine de SQLAlchemy;
+* `SessionLocal`;
+* base declarativa de SQLAlchemy;
+* gestión contextual de sesiones;
+* creación y eliminación de tablas;
+* entorno de pruebas independiente mediante SQLite en memoria;
+* fixture de sesión para pruebas;
+* rollback al finalizar las pruebas;
+* prueba automatizada de conexión a la base de datos;
+* configuración de `pytest`;
+* configuración de `pre-commit`;
+* control de versiones con Git/GitHub;
+* `CHANGELOG.md`;
+* configuración de `python-semantic-release`;
+* workflow de GitHub Actions para releases.
 
-Actualmente existe una prueba de conectividad que ejecuta `SELECT 1` sobre el engine destinado a pruebas y verifica que la conexión responda correctamente.
+### Pendiente
 
-### Ejecución
+Todavía se encuentran pendientes:
 
-Con las dependencias de desarrollo instaladas:
+* modelo de dominio `Task`;
+* operaciones CRUD;
+* repositorio de tareas;
+* interfaz de usuario/CLI funcional;
+* validaciones de negocio;
+* pruebas funcionales de tareas;
+* pruebas de persistencia;
+* pruebas de actualización y eliminación;
+* pruebas de casos límite;
+* demostración automatizada del aislamiento entre pruebas;
+* consolidación de la evidencia final.
 
-```bash
-pytest
+Los archivos destinados a estas responsabilidades ya existen en la estructura del proyecto, pero algunos todavía no contienen implementación.
+
+---
+
+## 4. Requisitos del sistema
+
+Los requisitos se han reducido a un conjunto mínimo que pueda evolucionar junto con el producto y convertirse posteriormente en casos de prueba automatizados.
+
+### 4.1 Requisitos funcionales
+
+| ID        | Requisito                                                                                       | Criterio de aceptación                                                                                                                            | Estado    |
+| --------- | ----------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| **RF-01** | El sistema deberá permitir crear una tarea con los datos obligatorios definidos por el dominio. | Al proporcionar datos válidos, se crea una tarea y se genera un identificador persistente. Los datos almacenados coinciden con los suministrados. | Pendiente |
+| **RF-02** | El sistema deberá permitir consultar una tarea existente mediante su identificador.             | Una tarea previamente creada puede recuperarse mediante su ID y devuelve los datos almacenados correspondientes.                                  | Pendiente |
+| **RF-03** | El sistema deberá permitir modificar y eliminar una tarea existente.                            | Una actualización modifica únicamente los datos esperados y una eliminación hace que la tarea deje de estar disponible mediante consulta.         | Pendiente |
+
+Estos requisitos se han elegido deliberadamente porque permiten construir posteriormente pruebas unitarias/integración con `pytest` sin requerir una interfaz gráfica ni infraestructura externa.
+
+### 4.2 Requisitos no funcionales
+
+| ID         | Requisito                                                                                                                           | Criterio de aceptación                                                                                                                                 | Estado                                            |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------- |
+| **RNF-01** | Las pruebas deberán ejecutarse sobre un entorno de persistencia aislado del entorno de desarrollo.                                  | La suite de pruebas utiliza SQLite en memoria y no requiere una base de datos persistente externa para ejecutarse.                                     | Implementado parcialmente                         |
+| **RNF-02** | La configuración de persistencia deberá poder modificarse mediante configuración externa sin modificar el código de acceso a datos. | El origen de la base de datos se obtiene mediante `DATABASE_URL`; cambiar esta variable permite seleccionar otra URL de conexión.                      | Implementado                                      |
+| **RNF-03** | Las pruebas deberán ser reproducibles y no depender del estado generado por pruebas anteriores.                                     | Cada prueba obtiene una sesión independiente y la suite debe demostrar mediante pruebas que los datos creados en un caso no están disponibles en otro. | Infraestructura implementada; evidencia pendiente |
+
+### Relación entre requisitos y pruebas
+
+La intención es que cada requisito relevante pueda relacionarse con evidencia:
+
+```text
+RF-01 → test_create_task
+RF-02 → test_get_task
+RF-03 → test_update_task / test_delete_task
+
+RNF-01 → test_database_isolation
+RNF-02 → test_database_configuration
+RNF-03 → test_test_isolation
 ```
 
-Para una salida más detallada:
+La existencia de un nombre de prueba en esta sección representa el **objetivo de verificación**, no una afirmación de que dichos tests ya existan.
 
-```bash
-pytest -v
-```
+---
 
-## Casos de prueba previstos
+## 5. Arquitectura actual
 
-A medida que se implemente la agenda de tareas, los casos se ampliarán como mínimo hacia las siguientes categorías:
-
-| Categoría | Ejemplo |
-|---|---|
-| Caso válido | Crear una tarea con datos correctos |
-| Campo obligatorio | Intentar crear una tarea sin título |
-| Límites | Título vacío o con longitud máxima permitida |
-| Persistencia | Crear una tarea y comprobar que pueda recuperarse |
-| Actualización | Modificar los datos de una tarea existente |
-| Eliminación | Eliminar una tarea existente |
-| Identificador inexistente | Consultar, actualizar o eliminar una tarea que no existe |
-| Aislamiento | Verificar que una prueba no contamine otra |
-
-Estos casos representan el plan de pruebas del producto y no deben interpretarse como funcionalidades ya implementadas.
-
-## Checklist de calidad
-
-La checklist se utilizará como mecanismo de revisión antes de cerrar cada incremento.
-
-- [ ] La funcionalidad tiene un comportamiento esperado claramente definido.
-- [ ] Los casos de prueba cubren el escenario principal.
-- [ ] Se consideran entradas inválidas o casos límite relevantes.
-- [ ] Las pruebas son reproducibles.
-- [ ] Las pruebas no dependen de datos persistentes del entorno de desarrollo.
-- [ ] El código mantiene una separación razonable de responsabilidades.
-- [ ] Los cambios relevantes quedan registrados en Git.
-- [ ] La evidencia de las pruebas puede ser consultada.
-- [ ] Las propuestas generadas con IA fueron revisadas críticamente.
-- [ ] No se declara como implementada una funcionalidad que todavía no existe.
-
-## Estructura del proyecto
+La estructura actual separa el código de aplicación de las pruebas:
 
 ```text
 .
@@ -147,73 +182,386 @@ La checklist se utilizará como mecanismo de revisión antes de cerrar cada incr
 └── uv.lock
 ```
 
-La separación entre `src/` y `tests/` permite mantener el código de producción independiente del código utilizado para verificarlo.
+La responsabilidad prevista de cada componente es:
 
-## Tecnologías y herramientas
+| Componente      | Responsabilidad                              |
+| --------------- | -------------------------------------------- |
+| `settings.py`   | Configuración externa de la aplicación       |
+| `database.py`   | Engine, sesiones y metadatos de persistencia |
+| `models.py`     | Modelos de dominio/persistencia              |
+| `repository.py` | Operaciones de acceso a datos                |
+| `cli.py`        | Interacción mediante línea de comandos       |
+| `main.py`       | Punto de entrada                             |
+| `tests/`        | Verificación automatizada                    |
+| `conftest.py`   | Fixtures y configuración común de pruebas    |
 
-- **Python 3.14+**
-- **SQLAlchemy 2.x** para acceso y configuración de persistencia.
-- **SQLite** como base de datos utilizada en el entorno de pruebas.
-- **pytest** para pruebas automatizadas.
-- **uv** para gestión de dependencias y entorno de desarrollo.
-- **Git / GitHub** para control de versiones y trazabilidad.
-- **pre-commit** para verificaciones previas a los commits.
-- **python-semantic-release** para automatización de versiones y releases.
+Actualmente esta separación constituye parcialmente una **estructura objetivo**: no todos los componentes contienen todavía lógica funcional.
 
-La versión y dependencias declaradas del proyecto se encuentran en `pyproject.toml`.
+---
 
-## Control de versiones
+## 6. Estrategia de pruebas
 
-GitHub constituye parte de la evidencia del proceso de calidad. Los cambios se mantienen mediante commits y el proyecto cuenta con un `CHANGELOG.md` generado a partir del historial de cambios.
+El proyecto utiliza **pytest** como framework de pruebas.
 
-La versión actual declarada en el proyecto es **1.1.0**.
+El entorno de pruebas utiliza:
 
-El historial disponible registra, entre otros cambios, la configuración de la base de datos, la incorporación de la prueba de conexión y ajustes de configuración del proyecto.
+```text
+SQLite en memoria
+        ↓
+test_engine
+        ↓
+fixture db_session
+        ↓
+prueba individual
+        ↓
+rollback
+```
 
-## Evidencias del taller
+La configuración existente crea un engine exclusivo para pruebas sobre `sqlite:///:memory:` y proporciona una sesión por prueba. Al finalizar, la sesión se cierra y la transacción se revierte.
 
-Las evidencias de calidad deben mantenerse asociadas al proyecto y pueden incluir:
+### Prueba actualmente implementada
 
-- Resultados de ejecución de `pytest`.
-- Casos de prueba diseñados.
-- Checklist de calidad completada.
-- Capturas o registros de resultados cuando sean requeridos por la actividad.
-- Commits relevantes del desarrollo.
-- Cambios derivados de defectos encontrados durante las pruebas.
-- Reflexión sobre las propuestas generadas con IA y cuáles fueron aceptadas, modificadas o descartadas.
+Existe una prueba de conectividad:
 
-## Reflexión ética y profesional
+```python
+def test_database_connection(test_engine):
+    with test_engine.connect() as connection:
+        result = connection.execute(text("SELECT 1"))
+        assert result.scalar() == 1
+```
 
-La calidad del software también tiene una dimensión ética y profesional. Un defecto puede afectar desde la pérdida de información hasta decisiones incorrectas de usuarios o procesos dependientes del sistema.
+Esta prueba demuestra que el engine destinado al entorno de pruebas puede establecer una conexión y ejecutar una operación SQL básica.
 
-Por esta razón, probar software no debe reducirse a demostrar que el caso feliz funciona. El desarrollador debe considerar qué puede fallar, qué impacto tendría el fallo y qué evidencia existe para sostener que una funcionalidad fue verificada.
+### Lo que esta prueba no demuestra
 
-En sistemas de mayor criticidad, esta responsabilidad aumenta: una decisión de implementación o una prueba insuficiente puede trasladar riesgos técnicos a personas y organizaciones que dependen del software.
+La prueba anterior **no demuestra**:
 
-## Limitaciones actuales
+* que exista el modelo `Task`;
+* que las tareas puedan crearse;
+* que puedan recuperarse;
+* que puedan actualizarse;
+* que puedan eliminarse;
+* que las validaciones funcionen;
+* que el aislamiento entre pruebas esté efectivamente verificado.
 
-Este repositorio corresponde a un prototipo académico en desarrollo. Entre las limitaciones actuales se encuentran:
+Por esta razón, la calidad del producto debe evaluarse incrementalmente.
 
-- La funcionalidad de gestión de tareas todavía no está completamente implementada.
-- La cobertura de pruebas es todavía limitada.
-- No se presenta una métrica de cobertura como evidencia hasta contar con una base de código y pruebas suficientemente representativa.
-- La checklist y los casos de prueba deberán evolucionar junto con la implementación.
+---
 
-Estas limitaciones forman parte del estado actual del proyecto y constituyen oportunidades de mejora para los siguientes incrementos.
+## 7. Plan de casos de prueba
 
-## Próximos incrementos
+| ID             | Caso                                                | Tipo          | Estado       |
+| -------------- | --------------------------------------------------- | ------------- | ------------ |
+| **TC-DB-01**   | Establecer conexión con la base de datos de pruebas | Integración   | Implementado |
+| **TC-DB-02**   | Crear tablas del modelo                             | Integración   | Pendiente    |
+| **TC-TASK-01** | Crear tarea válida                                  | Funcional     | Pendiente    |
+| **TC-TASK-02** | Rechazar datos obligatorios inválidos               | Validación    | Pendiente    |
+| **TC-TASK-03** | Consultar tarea existente                           | Funcional     | Pendiente    |
+| **TC-TASK-04** | Consultar tarea inexistente                         | Límite/Error  | Pendiente    |
+| **TC-TASK-05** | Actualizar tarea existente                          | Funcional     | Pendiente    |
+| **TC-TASK-06** | Eliminar tarea existente                            | Funcional     | Pendiente    |
+| **TC-TASK-07** | Verificar persistencia de una tarea                 | Integración   | Pendiente    |
+| **TC-ISO-01**  | Verificar aislamiento entre pruebas                 | Integración   | Pendiente    |
+| **TC-CONF-01** | Verificar configuración mediante `DATABASE_URL`     | Configuración | Pendiente    |
 
-1. Implementar el modelo de dominio de tareas.
-2. Implementar las operaciones básicas de persistencia.
-3. Añadir los casos de prueba correspondientes.
-4. Validar entradas y escenarios límite.
-5. Ejecutar y documentar la batería de pruebas.
-6. Revisar la checklist de calidad.
-7. Consolidar las evidencias del taller.
-8. Elaborar la reflexión final sobre calidad, uso de IA y responsabilidad profesional.
+---
 
-## Propósito académico
+## 8. Checklist de calidad
 
-Este proyecto busca demostrar un proceso básico de aseguramiento de calidad aplicado a un producto pequeño: **definir comportamiento, implementar, probar, revisar evidencia y mejorar**.
+La checklist se utiliza como mecanismo de control antes de considerar terminado un incremento.
 
-El resultado esperado no es solamente una agenda de tareas funcional, sino un pequeño producto cuyo proceso de construcción pueda ser inspeccionado y defendido mediante evidencia técnica.
+### 8.1 Requisitos
+
+* [ ] El requisito está definido de forma clara y verificable.
+* [ ] El requisito tiene un criterio de aceptación.
+* [ ] El comportamiento esperado puede convertirse en al menos un caso de prueba.
+* [ ] No se documentan como implementadas funcionalidades que solamente están planificadas.
+
+### 8.2 Implementación
+
+* [ ] La funcionalidad implementada corresponde al requisito definido.
+* [ ] La lógica de persistencia está separada de la interacción con el usuario.
+* [ ] Los errores esperados tienen un comportamiento definido.
+* [ ] Las entradas inválidas relevantes están contempladas.
+* [ ] La implementación no introduce dependencias innecesarias del entorno local.
+
+### 8.3 Pruebas automatizadas
+
+* [x] `pytest` está configurado.
+* [x] Existe una suite de pruebas separada del código de producción.
+* [x] Existe un entorno de base de datos específico para pruebas.
+* [x] Existe una prueba automatizada de conectividad.
+* [ ] Cada funcionalidad implementada tiene al menos una prueba correspondiente.
+* [ ] Existen pruebas para escenarios válidos.
+* [ ] Existen pruebas para escenarios inválidos.
+* [ ] Existen pruebas para casos límite relevantes.
+* [ ] Existe evidencia automatizada de aislamiento entre pruebas.
+* [ ] La suite completa puede ejecutarse mediante `pytest`.
+
+### 8.4 Persistencia
+
+* [x] La conexión se configura mediante `DATABASE_URL`.
+* [x] SQLAlchemy administra el acceso a la base de datos.
+* [x] Las pruebas utilizan SQLite en memoria.
+* [x] Las pruebas utilizan sesiones independientes.
+* [ ] La creación del modelo está cubierta por pruebas.
+* [ ] La creación de una tarea está cubierta por pruebas.
+* [ ] La recuperación de una tarea está cubierta por pruebas.
+* [ ] La actualización de una tarea está cubierta por pruebas.
+* [ ] La eliminación de una tarea está cubierta por pruebas.
+
+### 8.5 Reproducibilidad
+
+* [x] Las pruebas no requieren la base de datos de desarrollo.
+* [x] Existe una fixture específica para el entorno de pruebas.
+* [ ] Una prueba puede ejecutarse independientemente de las demás.
+* [ ] El orden de ejecución de las pruebas no afecta sus resultados.
+* [ ] Se demuestra mediante `pytest` que los datos de una prueba no contaminan otra.
+
+### 8.6 Control de versiones y trazabilidad
+
+* [x] El proyecto utiliza Git.
+* [x] El repositorio está alojado en GitHub.
+* [x] Existe `CHANGELOG.md`.
+* [x] El proyecto utiliza versionado automatizado mediante Semantic Release.
+* [x] Existe un workflow de GitHub Actions para releases.
+* [x] Se utilizan validaciones `pre-commit`.
+* [ ] Los cambios funcionales relevantes están asociados a pruebas.
+* [ ] Los defectos encontrados durante las pruebas quedan reflejados en el historial de cambios.
+
+El `CHANGELOG.md` actual registra cambios de configuración de base de datos, pruebas y CI, incluyendo la prueba de conexión añadida en la versión `1.1.0`.
+
+---
+
+## 9. Evidencia de calidad
+
+La evidencia del proyecto se divide en cuatro categorías.
+
+### Evidencia técnica
+
+* código fuente;
+* pruebas automatizadas;
+* resultados de `pytest`;
+* configuración del entorno de pruebas.
+
+### Evidencia de proceso
+
+* commits;
+* historial de cambios;
+* `CHANGELOG.md`;
+* configuración de `pre-commit`;
+* workflow de GitHub Actions.
+
+### Evidencia documental
+
+* requisitos;
+* criterios de aceptación;
+* casos de prueba;
+* checklist;
+* README.
+
+### Evidencia crítica
+
+* análisis de propuestas generadas mediante IA;
+* decisiones de aceptación, modificación o rechazo;
+* identificación de limitaciones;
+* reflexión sobre calidad y responsabilidad profesional.
+
+La IA puede contribuir a generar candidatos para casos de prueba o checklists, pero la evidencia final debe provenir del **análisis del estudiante y del comportamiento real del sistema**.
+
+---
+
+## 10. Uso crítico de inteligencia artificial
+
+La IA se considera una herramienta de apoyo al proceso de calidad, no un sustituto de la evaluación técnica.
+
+Puede utilizarse para:
+
+* proponer requisitos;
+* sugerir casos de prueba;
+* identificar casos límite;
+* generar una checklist inicial;
+* sugerir métricas;
+* detectar posibles defectos.
+
+Sin embargo, cada propuesta debe contrastarse con:
+
+1. los requisitos reales;
+2. la implementación existente;
+3. la arquitectura del proyecto;
+4. los resultados de las pruebas;
+5. el objetivo académico.
+
+Una propuesta generada por IA que no corresponde al comportamiento real del sistema no constituye evidencia de calidad.
+
+---
+
+## 11. Control de versiones
+
+GitHub constituye parte de la evidencia del proceso de desarrollo.
+
+El proyecto utiliza:
+
+* Git;
+* GitHub;
+* Conventional Commits mediante `pre-commit`;
+* `CHANGELOG.md`;
+* `python-semantic-release`;
+* GitHub Actions.
+
+La configuración actual del proyecto declara la versión `1.1.0` y utiliza Semantic Release para automatizar el versionado y la generación de releases.
+
+El workflow de release se ejecuta sobre `main` y utiliza `uv` para instalar las dependencias antes de ejecutar Semantic Release.
+
+---
+
+## 12. Tecnologías utilizadas
+
+| Tecnología              | Propósito                                   |
+| ----------------------- | ------------------------------------------- |
+| Python 3.14+            | Lenguaje de programación                    |
+| SQLAlchemy 2.x          | Persistencia y ORM                          |
+| SQLite                  | Base de datos de pruebas                    |
+| pytest                  | Pruebas automatizadas                       |
+| uv                      | Gestión de entorno y dependencias           |
+| python-dotenv           | Configuración mediante variables de entorno |
+| pre-commit              | Validaciones previas a commits              |
+| Git                     | Control de versiones                        |
+| GitHub                  | Repositorio y trazabilidad                  |
+| python-semantic-release | Versionado y releases                       |
+| GitHub Actions          | Automatización                              |
+
+Las versiones y dependencias declaradas se encuentran en `pyproject.toml`.
+
+---
+
+## 13. Roadmap de implementación
+
+El desarrollo restante se organizará en incrementos pequeños y verificables.
+
+### Incremento 1 — Dominio
+
+1. Definir el modelo `Task`.
+2. Definir los atributos obligatorios.
+3. Crear las restricciones relevantes.
+4. Crear pruebas del modelo.
+
+### Incremento 2 — Persistencia
+
+1. Implementar el repositorio.
+2. Implementar creación.
+3. Implementar consulta.
+4. Implementar actualización.
+5. Implementar eliminación.
+6. Crear pruebas de persistencia.
+
+### Incremento 3 — Validación
+
+1. Identificar entradas inválidas.
+2. Implementar validaciones.
+3. Añadir casos límite.
+4. Añadir pruebas negativas.
+
+### Incremento 4 — Aislamiento y reproducibilidad
+
+1. Completar fixtures.
+2. Verificar rollback.
+3. Crear prueba explícita de aislamiento.
+4. Ejecutar la suite completa.
+
+### Incremento 5 — Evidencia
+
+1. Ejecutar `pytest -v`.
+2. Completar la checklist.
+3. Registrar defectos encontrados.
+4. Registrar cambios relevantes.
+5. Consolidar evidencia para el informe académico.
+6. Elaborar la reflexión final.
+
+---
+
+## 14. Criterio para considerar terminado un incremento
+
+Un incremento no se considerará terminado únicamente porque el código funcione manualmente.
+
+Debe cumplir como mínimo:
+
+```text
+Requisito definido
+       ↓
+Implementación
+       ↓
+Caso de prueba
+       ↓
+pytest PASS
+       ↓
+Checklist revisada
+       ↓
+Cambio registrado
+```
+
+Esto permite transformar la calidad de una afirmación subjetiva en un proceso respaldado por evidencia.
+
+---
+
+## 15. Limitaciones actuales
+
+El proyecto todavía presenta limitaciones importantes:
+
+* la agenda de tareas aún no está implementada;
+* el modelo de dominio está pendiente;
+* las operaciones CRUD están pendientes;
+* las pruebas funcionales están pendientes;
+* la prueba de conexión constituye actualmente la principal evidencia automatizada;
+* el aislamiento de sesiones está implementado como infraestructura, pero todavía requiere una prueba que demuestre su comportamiento;
+* no existe todavía una métrica de cobertura suficientemente representativa para utilizarla como evidencia principal.
+
+Estas limitaciones no se ocultan en la documentación. Constituyen el estado real del producto y determinan el trabajo restante.
+
+---
+
+## 16. Reflexión sobre calidad
+
+El proyecto utiliza una agenda de tareas sencilla como vehículo para demostrar un principio más general:
+
+> **Un software que funciona no necesariamente es un software cuya calidad haya sido demostrada.**
+
+Una implementación puede ejecutar correctamente el escenario esperado y aun así presentar problemas de validación, persistencia, aislamiento, mantenibilidad o comportamiento ante errores.
+
+Por ello, el objetivo de este proyecto no es únicamente terminar una agenda de tareas. El objetivo es construir un proceso mínimo mediante el cual cada comportamiento importante pueda relacionarse con un requisito y una evidencia de verificación.
+
+Esta perspectiva también tiene una dimensión profesional y ética. En sistemas reales, los defectos pueden provocar pérdida de información, decisiones incorrectas, interrupciones operativas o impactos económicos. La responsabilidad del desarrollador no termina cuando el programa "funciona"; también implica conocer sus límites y disponer de evidencia razonable sobre su comportamiento.
+
+---
+
+## 17. Estado resumido
+
+| Área                            | Estado       |
+| ------------------------------- | ------------ |
+| Configuración del proyecto      | Implementado |
+| Persistencia base               | Implementado |
+| Entorno de pruebas              | Implementado |
+| Prueba de conexión              | Implementado |
+| Modelo de tareas                | Pendiente    |
+| CRUD                            | Pendiente    |
+| Validaciones                    | Pendiente    |
+| Pruebas funcionales             | Pendiente    |
+| Prueba explícita de aislamiento | Pendiente    |
+| Checklist                       | Definida     |
+| Control de versiones            | Implementado |
+| Changelog                       | Implementado |
+| Semantic Release                | Configurado  |
+| GitHub Actions                  | Configurado  |
+| Evidencia final del taller      | Pendiente    |
+
+---
+
+## 18. Conclusión
+
+**Task Manager QA** representa una implementación incremental de un pequeño sistema de gestión de tareas acompañada por prácticas iniciales de aseguramiento de calidad.
+
+El estado actual demuestra que ya existe una base técnica para desarrollar y verificar el producto: configuración externa, persistencia mediante SQLAlchemy, entorno aislado de pruebas, `pytest`, control de versiones y automatización de releases.
+
+El siguiente objetivo no es agregar complejidad innecesaria, sino utilizar esta infraestructura para implementar progresivamente el dominio de tareas y convertir cada funcionalidad en **comportamiento verificable mediante pruebas automatizadas**.
+
+El resultado esperado es un mini-producto en el que pueda demostrarse no solamente que el software funciona, sino **qué requisitos cumple, cómo fueron verificados y qué evidencia respalda las conclusiones de calidad**.
