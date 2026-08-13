@@ -5,35 +5,40 @@ on:
     branches:
       - main
 
+permissions:
+  contents: read
+
 jobs:
   release:
     runs-on: ubuntu-latest
     permissions:
-      contents: write # Requerido para crear commits, tags y releases
+      contents: write
       pull-requests: write
 
     steps:
+      # S7637: Pinned a SHA-1
       - name: Checkout del código
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           token: ${{ secrets.GH_TOKEN }}
-          fetch-depth: 0 # Necesario para leer todo el historial de commits
+          fetch-depth: 0
+          persist-credentials: false
 
-      # Instala uv y configura la caché de dependencias
+      # S7637: Pinned a SHA-1
       - name: Instalar uv
-        uses: astral-sh/setup-uv@v5
+        uses: astral-sh/setup-uv@ae62891fec2bb8e7d6c99fc78c9fec3a63790f8d
         with:
           enable-cache: true
 
-      # Sincroniza todas las dependencias (prod + dev) en un solo paso
+      # S8541: Prevención de ejecución de build scripts
+      # S8544: Uso estricto de uv.lock congelado
       - name: Instalar dependencias
-        run: uv sync --frozen
+        run: uv sync --frozen --no-build
 
-      # Ejecuta semantic-release
       - name: Generar Release Automático
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
           git config user.name "anxwball"
           git config user.email "anxwball@users.noreply.github.com"
-          uv run semantic-release version
+          uv run --frozen --no-build semantic-release version
