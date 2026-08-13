@@ -5,9 +5,14 @@ build/
 dist/
 wheels/
 *.egg-info
+.pytest_cache/
 
 # Virtual environments
 .venv
 
 # Environment variables
 .env
+
+# Sensitive files
+config.json
+settings.json
