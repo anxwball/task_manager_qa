@@ -1,9 +1,6 @@
 # src/models.py
-
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.orm import declarative_base
-
-Base = declarative_base()
+from src.database import Base
 
 class Task(Base):
     __tablename__ = 'tasks'
